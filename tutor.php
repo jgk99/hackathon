@@ -1,7 +1,7 @@
 <?php 
 require_once("includes/dbfuncs.php");
 session_start();
-$con = dbconnect();
+
 $tutorId = $_GET['id'];
 
 
@@ -42,7 +42,7 @@ $tutorId = $_GET['id'];
 	<?php require_once("includes/header.php"); ?> 
 	
 		
-<div class="col-md-3">
+<div class="col-md-4">
 	<?php 
 	 echo '<img src="pictures/article_image_'.     $tutorId     .'.jpeg" width=300 height=400>';
 
@@ -50,14 +50,51 @@ $tutorId = $_GET['id'];
 
 	</div>	
 
-<div class="col-md-3">
+<div class="col-md-8">
 <?php
+$con = dbconnect();
 $query = "SELECT * FROM `tutors` WHERE `tutor_id` = $tutorId";
+$result = mysqli_query($con, $query);
+	
+while($row = mysqli_fetch_assoc($result))	{
+
+
+	$name= $row["firstname"];
+	$name.=" ";
+	$name.=$row["lastname"];
+	$email= $row["email"];
+	$message= $row["message"];
+	$price= $row["price"];
+}
+echo '<h2>';
+echo "$name";
+echo '</h2>';
+
+echo '<h4>';
+
+echo "$email";
+echo '<br />';
+echo "$message";
+echo '<br />';
+echo "Price: $";
+echo "$price";
+
+echo '<br />';
+
+echo '</h4>';
+
+
+
+
 
 
 
 
 ?>
+
+
+
+
 
 
 </div>
