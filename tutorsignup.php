@@ -187,7 +187,20 @@ if (isset($_POST['submit'])) {
                                 
                                 </tr>
                                 
+                                <tr>
+                                <td>Subjects:</td>
+					<td align="left">
+                                        
+                                        
+                                        <input type="checkbox" name="subjects" class="form-control" required />
+                                        
+                                        
+                                        
+                                        
+                                        </td>
                                 
+                                
+                                </tr>
                                 
 					<td></td>
 					<td><input type="submit" name="submit" value="Submit" class="btn btn-md btn-primary" /></td>

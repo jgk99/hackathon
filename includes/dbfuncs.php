@@ -49,11 +49,9 @@ function addTutor($lname, $fname, $usrname, $email, $pass, $price) {
 	$pass = $con->real_escape_string(hash("sha256", $pass)); //Hash password using SHA256 algorithm
 
 	//Build query string
-<<<<<<< HEAD
+
 	$query = "INSERT INTO `Tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price')";
-=======
-	$query = "INSERT INTO `tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price')";
->>>>>>> origin/master
+
 
  
 mysqli_query($con,$query);
