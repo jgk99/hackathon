@@ -2,7 +2,7 @@
 
 function dbconnect() {
 	//Create connection
-	$con = new mysqli("localhost","root","root","tutors");
+	$con = new mysqli('172.16.89.144', 'root', 'root', 'tutors', '8889');
 
 	//Test Connection
 	if (mysqli_connect_errno()) {

@@ -20,6 +20,7 @@ $email = "";
 $password1 = "";
 $lname = "";
 $price = "";
+//$imgname = "";
 
 
 
@@ -31,8 +32,9 @@ if (isset($_POST['submit'])) {
 	$password1 = $_POST["pw"];
 	$password2 = $_POST["pw-verify"];
 	$price = $_POST["price"];
+        //$imgname= $_FILES['upload_picture']['tmp_name'];
 
-
+//print_r($_FILES);
 
 	
 	if($firstname == "" || $lastname == "") {
