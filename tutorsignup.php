@@ -136,7 +136,7 @@ if (isset($_POST['submit'])) {
 		<h2>Tutor Sign Up</h2>
 		<br />
 		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script> -->
-		<form action="tutorsignup.php" method="post" id="register" data-parsley-validate>
+		<form action="tutorsignup.php" method="POST" id="register" enctype="multipart/form-data" data-parsley-validate>
 			<table align="left">
 				<tr>
 					<td align="left" class="form-label">First Name: </td>
@@ -162,12 +162,35 @@ if (isset($_POST['submit'])) {
 					<td class="form-label">Confirm Password: </td>
 					<td align="left"><input type="password" name="pw-verify" data-parsley-equalto="#pw" class="form-control"  value="<?php echo $password2; ?>" required /></td>
 				</tr>
+                                
+                                
+                                
+                                
+                                
 				<br/><?php echo $pmatch; ?><?php echo $utaken; ?><?php echo $etaken; ?>
 				<tr>
 					<tr>
 					<td class="form-label">Price: </td>
 					<td align="left"><input type="text" name="price" class="form-control" value="<?php echo $price; ?>" required /></td>
 				</tr>
+                                
+                                <tr>
+                                <td>Image:</td>
+					<td align="left">
+                                        
+                                        
+                                        <input type="file" name="uploadPicture" class="form-control" required />
+                                        
+                                        
+                                        
+                                        
+                                        </td>
+                                
+                                
+                                </tr>
+                                
+                                
+                                
 					<td></td>
 					<td><input type="submit" name="submit" value="Submit" class="btn btn-md btn-primary" /></td>
 				</tr>
