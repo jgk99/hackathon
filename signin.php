@@ -12,9 +12,9 @@ if (isset($_POST['submit'])) {
 	$success = validateUser($username, $password);
 
 	if ($success == "true") {
-		$userid = getIDFromUsername($username);
+		$userid = getUserIDFromUsername($username);
 		$_SESSION["id"] = $userid;
-		header("Location: movies.php");
+		header("Location: index.php");
 		exit();
 	}
 	else{
