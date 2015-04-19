@@ -1,7 +1,5 @@
 <?php
-require_once("includes/forcessl.php");
-require_once("includes/restricted.php");
-require_once("includes/dbfuncs.php");
+
 //error_reporting(E_ALL | ~E_ubTRICT);
 
 if (isset($_POST['submit'])) {
@@ -38,7 +36,7 @@ if (isset($_POST['submit'])) {
 	<?php require_once("includes/header.php"); ?>
 <br> <br> <br> <br> <br> <br> 
 <h2 class="text-center">Congratulations, your Account is Complete!!!</h2>
-<br> <p class="text-center lead">You should start rating movies that you have already seen now!<br /><br />
+<br> <p class="text-center lead">You should start looking for tutors now!<br /><br />
 <a href='subjects.php' class='btn btn-primary'>Find Tutors Here</a>
 
 

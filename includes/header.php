@@ -52,9 +52,7 @@ echo '
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li>
-						<a href="subjects.php">Subjects<span class="sr-only">(current)</span></a>
-					</li>
+					
 					<li>
 						<a href="'.$accountlink.'">'.$account.'</a>
 					</li>
