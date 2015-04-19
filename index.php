@@ -52,45 +52,77 @@ while ($row = mysqli_fetch_array($subjects)) {
 $subjects2 = mysqli_query($link,"SELECT * FROM Tutors WHERE subject = 'English'");
 echo '<h2>';
 echo "English";
-echo '</h2>';
+echo '</h2><table>';
 while ($row = mysqli_fetch_array($subjects2)) {
         echo '<lead>';
-        echo '<a href=tutor.php?id=' . $row['tutor_id'].'>' .  $row['firstname'] . " " . $row['lastname'] . '</a>';
-        echo "<br>";
-        echo '</lead>';
+         echo '<tr><td><a href=tutor.php?id=' . $row['tutor_id'].'>' .  $row['firstname'] . " " . $row['lastname'] . '</a></td>
+
+        <td>
+        <img src="pictures/article_image_'.     $row['tutor_id']     .'.jpeg" width=200 height=200>
+
+        </td></tr><br/>
+
+
+        ';
+        
+        echo '</lead></table>';
         }
 
 $subjects3 = mysqli_query($link,"SELECT * FROM Tutors WHERE subject = 'Science'");
 echo '<h2>';
 echo "Science";
-echo '</h2>';
+echo '</h2><table>';
 while ($row = mysqli_fetch_array($subjects3)) {
         echo '<lead>';
-        echo '<a href=tutor.php?id=' . $row['tutor_id'].'>' .  $row['firstname'] . " " . $row['lastname'] . '</a>';
-        echo "<br>";
-        echo '</lead>';
+        echo '<tr><td><a href=tutor.php?id=' . $row['tutor_id'].'>' .  $row['firstname'] . " " . $row['lastname'] . '</a></td>
+
+        <td>
+        <img src="pictures/article_image_'.     $row['tutor_id']     .'.jpeg" width=200 height=200>
+
+        </td></tr><br/>
+
+
+        ';
+        
+        echo '</lead></table>';
         }
         
 $subjects4 = mysqli_query($link,"SELECT * FROM Tutors WHERE subject = 'History'");
 echo '<h2>';
 echo "History";
-echo '</h2>';
+echo '</h2><table>';
 while ($row = mysqli_fetch_array($subjects4)) {
         echo '<lead>';
-        echo '<a href=tutor.php?id=' . $row['tutor_id'].'>' .  $row['firstname'] . " " . $row['lastname'] . '</a>';
-        echo "<br>";
-        echo '</lead>';
+        echo '<tr><td><a href=tutor.php?id=' . $row['tutor_id'].'>' .  $row['firstname'] . " " . $row['lastname'] . '</a></td>
+
+        <td>
+        <img src="pictures/article_image_'.     $row['tutor_id']     .'.jpeg" width=200 height=200>
+
+        </td></tr><br/>
+
+
+        ';
+        
+        echo '</lead></table>';
         }
         
 $subjects5 = mysqli_query($link,"SELECT * FROM Tutors WHERE subject = 'Foreign Language'");
 echo '<h2>';
 echo "Foreign Language";
-echo '</h2>';
+echo '</h2><table>';
 while ($row = mysqli_fetch_array($subjects5)) {
         echo '<lead>';
-        echo '<a href=tutor.php?id=' . $row['tutor_id'].'>' .  $row['firstname'] . " " . $row['lastname'] . '</a>';
-        echo "<br>";
-        echo '</lead>';
+        echo '<tr><td><a href=tutor.php?id=' . $row['tutor_id'].'>' .  $row['firstname'] . " " . $row['lastname'] . '</a></td>
+
+        <td>
+        <img src="pictures/article_image_'.     $row['tutor_id']     .'.jpeg" width=200 height=200>
+
+        </td></tr><br/>
+
+
+        ';
+        
+        echo '</lead></table>';
         }
         
 // $tag = mysqli_query($link,"SELECT Article_Name, Content, Tag FROM Article, Tags, ArticleTag WHERE ArticleTag.Article_ID 

@@ -2,7 +2,7 @@
 require_once("includes/dbfuncs.php");
 session_start();
 $con = dbconnect();
-
+$tutorId = $_GET['id'];
 
 
 
@@ -33,8 +33,6 @@ $con = dbconnect();
 	<title>Tutor Finder</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<meta charset="UTF-8">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -44,6 +42,37 @@ $con = dbconnect();
 	<?php require_once("includes/header.php"); ?> 
 	
 		
+<div class="col-md-3">
+	<?php 
+	 echo '<img src="pictures/article_image_'.     $tutorId     .'.jpeg" width=300 height=400>';
+
+	?>
+
+	</div>	
+
+<div class="col-md-3">
+<?php
+$query = "SELECT * FROM `tutors` WHERE `tutor_id` = $tutorId";
+
+
+
+
+?>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 	</div>
 </div>
 
