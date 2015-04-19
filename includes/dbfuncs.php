@@ -52,7 +52,7 @@ function addTutor($lname, $fname, $usrname, $email, $pass, $price, $subjects, $m
 
 	//Build query string
 
-	$query = "INSERT INTO `Tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`,`subject`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price','$subjects')";
+	$query = "INSERT INTO `Tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`,`subject`,'message') VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price','$subjects','$message')";
 
 
  
