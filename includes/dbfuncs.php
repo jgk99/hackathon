@@ -74,7 +74,7 @@ function getTutorIDFromUsername($username) {
 		//Check if query returned a row results
 		if ($data->num_rows == 1) {
 			$row = mysqli_fetch_assoc($data);
-			return $row["ID"];
+			return $row["user_id"];
 		} else {
 			return false;
 		}
@@ -113,7 +113,7 @@ function getUserIDFromUsername($username) {
 
 	$username = $con->real_escape_string($username);
 
-	$query = "SELECT `id` FROM `users` WHERE `username` = '$username'";
+	$query = "SELECT `user_id` FROM `users` WHERE `username` = '$username'";
 	$data = $con->query($query);
 	if (!$data) {
 		//throw new mysqli_sql_exception("Query failed with error: $con->sqlstate");
@@ -121,7 +121,7 @@ function getUserIDFromUsername($username) {
 		//Check if query returned a row results
 		if ($data->num_rows == 1) {
 			$row = mysqli_fetch_assoc($data);
-			return $row["ID"];
+			return $row["user_id"];
 		} else {
 			return false;
 		}
