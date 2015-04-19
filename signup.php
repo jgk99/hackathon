@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once("includes/dbfuncs.php");
 $noredirect="";
 
@@ -97,6 +97,7 @@ if (isset($_POST['submit'])) {
  	
 		
  		$userid = getUserIDFromUsername($username);
+ 		
  		$_SESSION["id"] = $userid;
 		header("Location: signupComplete.php");
 		exit();

@@ -49,7 +49,11 @@ function addTutor($lname, $fname, $usrname, $email, $pass, $price) {
 	$pass = $con->real_escape_string(hash("sha256", $pass)); //Hash password using SHA256 algorithm
 
 	//Build query string
+<<<<<<< HEAD
 	$query = "INSERT INTO `Tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price')";
+=======
+	$query = "INSERT INTO `tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price')";
+>>>>>>> origin/master
 
  
 mysqli_query($con,$query);
@@ -73,14 +77,38 @@ function getTutorIDFromUsername($username) {
 		//Check if query returned a row results
 		if ($data->num_rows == 1) {
 			$row = mysqli_fetch_assoc($data);
-			return $row["ID"];
+			return $row["user_id"];
 		} else {
 			return false;
 		}
 	}
 }
 
+function validateUser($usrname, $passwd) {
+	//Connect to database
+	$con = dbconnect();
 
+	//Sanitize Variables
+	$usrname = $con->real_escape_string($usrname);
+	$passwd = $con->real_escape_string(hash("sha256",$passwd)); //Hash password using SHA256 algorithm
+
+	//Build query string
+	$query = "SELECT `username` FROM `users || tutors` WHERE `username` = '$usrname' and `password` = '$passwd'";
+	
+	//Execute query and check for errors
+	$data = $con->query($query);
+	if (!$data) {
+		throw new mysqli_sql_exception("Query failed with error: $con->sqlstate");
+	} else {
+		//Check if query returned a row results
+		if ($data->num_rows == 1) {
+			//User is valid
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
 
 		
 function getUserIDFromUsername($username) {
@@ -88,7 +116,7 @@ function getUserIDFromUsername($username) {
 
 	$username = $con->real_escape_string($username);
 
-	$query = "SELECT `id` FROM `users` WHERE `username` = '$username'";
+	$query = "SELECT `user_id` FROM `users` WHERE `username` = '$username'";
 	$data = $con->query($query);
 	if (!$data) {
 		//throw new mysqli_sql_exception("Query failed with error: $con->sqlstate");
@@ -96,7 +124,7 @@ function getUserIDFromUsername($username) {
 		//Check if query returned a row results
 		if ($data->num_rows == 1) {
 			$row = mysqli_fetch_assoc($data);
-			return $row["ID"];
+			return $row["user_id"];
 		} else {
 			return false;
 		}

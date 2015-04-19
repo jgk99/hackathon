@@ -7,10 +7,14 @@ $accountlink = "";
 $tutorsign = "";
 $tutorsignlink = "";
 
+
+
 if (isset($_SESSION["id"])) {
 	$login = "Log Out";
 	$account = "Sign Out";
 	$accountlink = "logout.php";
+	$tutorsign= "";
+	$tutorsignlink= "";
 	$loginlink = "logout.php";
 	$signin = '
 		<form class="navbar-form navbar-right" action="search.php" method="post" role="search">
