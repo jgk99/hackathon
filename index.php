@@ -20,7 +20,7 @@ else{
 	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<div align="center">
 <div class="container">
 	<?php require_once("includes/header.php"); ?> 
 
@@ -33,12 +33,20 @@ $link = mysqli_connect('172.16.89.144', 'root', 'root', 'tutors', '8889');
 $subjects = mysqli_query($link,"SELECT * FROM Tutors WHERE subject = 'Math'");
 echo '<h2>';
 echo "Math";
-echo '</h2>';
+echo '</h2><table>';
 while ($row = mysqli_fetch_array($subjects)) {
         echo '<lead>';
-        echo '<a href=tutor.php?id=' . $row['tutor_id'].'>' .  $row['firstname'] . " " . $row['lastname'] . '</a>';
-        echo "<br>";
-        echo '</lead>';
+        echo '<tr><td><a href=tutor.php?id=' . $row['tutor_id'].'>' .  $row['firstname'] . " " . $row['lastname'] . '</a></td>
+
+        <td>
+        <img src="pictures/article_image_'.     $row['tutor_id']     .'.jpeg" width=200 height=200>
+
+        </td></tr><br/>
+
+
+        ';
+        
+        echo '</lead></table>';
         }
 
 $subjects2 = mysqli_query($link,"SELECT * FROM Tutors WHERE subject = 'English'");
@@ -100,6 +108,7 @@ while ($row = mysqli_fetch_array($subjects5)) {
 
 
 
+</div>
 </div>
 <br/>
 <?php require_once("includes/footer.php"); ?>

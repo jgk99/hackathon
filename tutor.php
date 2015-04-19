@@ -1,6 +1,7 @@
 <?php 
 require_once("includes/dbfuncs.php");
 session_start();
+$con = dbconnect();
 
 
 
@@ -27,12 +28,27 @@ session_start();
 
 
 
+<html>
+<head>
+	<title>Tutor Finder</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
 
-<html lang="en">
-	<head>
-		<title>untitled</title>
-	</head>
-	<body>
 
-	</body>
+
+<div class="container">
+	<?php require_once("includes/header.php"); ?> 
+	
+		
+	</div>
+</div>
+
+
+<?php require_once("includes/footer.php"); ?>
+
+</body>
 </html>
