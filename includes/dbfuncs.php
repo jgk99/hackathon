@@ -67,7 +67,7 @@ function getTutorIDFromUsername($username) {
 
 	$username = $con->real_escape_string($username);
 
-	$query = "SELECT `id` FROM `tutors` WHERE `username` = '$username'";
+	$query = "SELECT `tutor_id` FROM `tutors` WHERE `username` = '$username'";
 	$data = $con->query($query);
 	if (!$data) {
 		//throw new mysqli_sql_exception("Query failed with error: $con->sqlstate");
@@ -75,7 +75,7 @@ function getTutorIDFromUsername($username) {
 		//Check if query returned a row results
 		if ($data->num_rows == 1) {
 			$row = mysqli_fetch_assoc($data);
-			return $row["user_id"];
+			return $row["tutor_id"];
 		} else {
 			return false;
 		}
@@ -106,7 +106,7 @@ function validateUser($usrname, $passwd) {
 		} 
 
 		else{
-
+			
 			$query = "SELECT `username` FROM `tutors` WHERE `username` = '$usrname' and `password` = '$passwd'";
 	
 	//Execute query and check for errors
