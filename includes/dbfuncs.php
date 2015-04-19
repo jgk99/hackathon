@@ -81,4 +81,30 @@ function getTutorIDFromUsername($username) {
 	}
 }
 
+
+
+		
+function getUserIDFromUsername($username) {
+	$con = dbconnect();
+
+	$username = $con->real_escape_string($username);
+
+	$query = "SELECT `id` FROM `users` WHERE `username` = '$username'";
+	$data = $con->query($query);
+	if (!$data) {
+		//throw new mysqli_sql_exception("Query failed with error: $con->sqlstate");
+	} else {
+		//Check if query returned a row results
+		if ($data->num_rows == 1) {
+			$row = mysqli_fetch_assoc($data);
+			return $row["ID"];
+		} else {
+			return false;
+		}
+	}
+}
+
+
+
+
 ?>

@@ -96,7 +96,8 @@ if (isset($_POST['submit'])) {
  		else {
  	
 		
-
+ 		$userid = getUserIDFromUsername($username);
+ 		$_SESSION["id"] = $userid;
 		header("Location: signupComplete.php");
 		exit();
 
