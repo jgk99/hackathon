@@ -73,8 +73,7 @@ echo '</h2>';
 echo '<h4>';
 
 echo "$email";
-echo '<br />';
-echo "$message";
+
 echo '<br />';
 echo "Price: $";
 echo "$price";
@@ -82,8 +81,10 @@ echo "$price";
 echo '<br />';
 
 echo '</h4>';
-
-
+echo '<lead>';
+echo '<br />';
+echo "$message";
+echo '</lead>';
 
 
 
@@ -112,7 +113,11 @@ echo '</h4>';
 
 	</div>
 </div>
-
+<br />
+<br />
+<br />
+<br />
+<br />
 
 <?php require_once("includes/footer.php"); ?>
 
