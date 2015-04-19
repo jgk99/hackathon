@@ -1,7 +1,7 @@
 <?php
 
 require_once("includes/dbfuncs.php");
-
+$noredirect="";
 
 $utaken = "";
 $etaken = "";
@@ -97,7 +97,7 @@ if (isset($_POST['submit'])) {
  	
 		
 
-		echo "Signup complete";
+		header("Location: signupComplete.php");
 		exit();
 
  		}
@@ -110,7 +110,7 @@ if (isset($_POST['submit'])) {
 
 <html>
 <head>
-	<title>My Movie Critic</title>
+	<title>Tutor Finder</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<meta charset="UTF-8">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
