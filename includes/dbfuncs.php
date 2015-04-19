@@ -89,21 +89,40 @@ function validateUser($usrname, $passwd) {
 	$usrname = $con->real_escape_string($usrname);
 	$passwd = $con->real_escape_string(hash("sha256",$passwd)); //Hash password using SHA256 algorithm
 
+
 	//Build query string
-	$query = "SELECT `username` FROM `users || tutors` WHERE `username` = '$usrname' and `password` = '$passwd'";
+	$query = "SELECT `username` FROM `users` WHERE `username` = '$usrname' and `password` = '$passwd'";
 	
 	//Execute query and check for errors
 	$data = $con->query($query);
 	if (!$data) {
-		throw new mysqli_sql_exception("Query failed with error: $con->sqlstate");
+		//throw new mysqli_sql_exception("Query failed with error: $con->sqlstate");
 	} else {
 		//Check if query returned a row results
 		if ($data->num_rows == 1) {
 			//User is valid
 			return true;
-		} else {
-			return false;
+		} 
+
+		else{
+
+			$query = "SELECT `username` FROM `tutors` WHERE `username` = '$usrname' and `password` = '$passwd'";
+	
+	//Execute query and check for errors
+	$data = $con->query($query);
+
+	if($data->num_rows == 1)	{
+		return true;
+	}
+else{
+	return false;
+}
+
 		}
+
+
+
+
 	}
 }
 
