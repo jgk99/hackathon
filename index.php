@@ -12,7 +12,7 @@ else{
 
 <html>
 <head>
-	<title>My Movie Critic</title>
+	<title>Tutor Finder</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<meta charset="UTF-8">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -167,11 +167,42 @@ else{
 		</div>
     </div>
 
-	
+
+<?php
+
+ 
+  
+$link = mysqli_connect('172.16.89.144', 'root', 'root', 'tutors', '8889');
+$subjects = mysqli_query($link,"SELECT * FROM Subjects");
+while ($row = mysqli_fetch_array($subjects)) {
+        echo $row['subject'];
+        $tutors = mysqli_query($link,"SELECT firstname, lastname FROM Tutors, Subjects, ConnectTutor WHERE ConnectTutor.tutor_id = Tutors.tutor_id and ConnectTutor.subject_id = Subjects.subject_id AND Subjects.subject = '". $row['subject'] ."' ");   
+        echo "<br>";
+        echo "<br>";
+        while ($row2 = mysqli_fetch_array($tutors)) {
+        echo $row2['firstname'];
+        echo "<br>";
+        }
+}
+
+
+// $tag = mysqli_query($link,"SELECT Article_Name, Content, Tag FROM Article, Tags, ArticleTag WHERE ArticleTag.Article_ID 
+// = Article.Article_ID and ArticleTag.Tag_ID = Tags.Tag_ID AND Tags.Tag = '$page' ORDER BY Date DESC");     
+     
+                    
+        
+?>
+
+
+
+
+
+
+
+
+
 </div>
 <br/>
-
 <?php require_once("includes/footer.php"); ?>
-
 </body>
 </html>
