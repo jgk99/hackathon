@@ -15,19 +15,20 @@ function dbconnect() {
 
 
 
-function addUser($lname, $fname, $usrname, $email, $pass) {
+function addUser($lname, $fname, $usrname, $email, $pass, $message) {
 	//Connecto to database
 	$con = dbconnect();
 
 	//Sanitize Variables
 	$lname = $con->real_escape_string($lname);
 	$fname = $con->real_escape_string($fname);
+        $message = $con->real_escape_string($message);
 	$usrname = $con->real_escape_string($usrname);
 	$email = $con->real_escape_string($email);
 	$pass = $con->real_escape_string(hash("sha256", $pass)); //Hash password using SHA256 algorithm
 
 	//Build query string
-	$query = "INSERT INTO `users` (`lastname`, `firstname`, `username`, `email`, `password`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass')";
+	$query = "INSERT INTO `users` (`lastname`, `firstname`, `username`, `email`, `password`,'message') VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$message')";
 
 	//Execute query and check for errors
 	if (!$con->query($query)) {
@@ -36,13 +37,14 @@ function addUser($lname, $fname, $usrname, $email, $pass) {
 	$con->close();
 }
 
-function addTutor($lname, $fname, $usrname, $email, $pass, $price, $subjects) {
+function addTutor($lname, $fname, $usrname, $email, $pass, $price, $subjects, $message) {
 	//Connecto to database
 	$con = dbconnect();
 
 	//Sanitize Variables
 	$price = $con->real_escape_string($price);
 	$lname = $con->real_escape_string($lname);
+        $message = $con->real_escape_string($message);
 	$fname = $con->real_escape_string($fname);
 	$usrname = $con->real_escape_string($usrname);
 	$email = $con->real_escape_string($email);

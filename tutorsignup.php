@@ -22,7 +22,7 @@ $lname = "";
 $price = "";
 $imgname = "";
 $subjects="";
-
+$message="";
 
 
 if (isset($_POST['submit'])) {
@@ -163,6 +163,10 @@ if (isset($_POST['submit'])) {
 				<tr>
 					<td class="form-label">Confirm Password: </td>
 					<td align="left"><input type="password" name="pw-verify" data-parsley-equalto="#pw" class="form-control"  value="<?php echo $password2; ?>" required /></td>
+				</tr>
+                                <tr>
+					<td align="left" class="form-label">Personal Message: </td>
+					<td align="left"><input type="text" name="message" class="form-control" value="<?php echo $message; ?>" required /></td>
 				</tr>
                                 
                                 
