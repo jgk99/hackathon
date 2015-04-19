@@ -36,7 +36,7 @@ function addUser($lname, $fname, $usrname, $email, $pass) {
 	$con->close();
 }
 
-function addTutor($lname, $fname, $usrname, $email, $pass, $price, $subject) {
+function addTutor($lname, $fname, $usrname, $email, $pass, $price, $subjects) {
 	//Connecto to database
 	$con = dbconnect();
 
@@ -50,7 +50,7 @@ function addTutor($lname, $fname, $usrname, $email, $pass, $price, $subject) {
 
 	//Build query string
 
-	$query = "INSERT INTO `Tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`,`subjects`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price','$subjects')";
+	$query = "INSERT INTO `Tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`,`subject`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price','$subjects')";
 
 
  
