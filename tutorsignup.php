@@ -20,7 +20,7 @@ $email = "";
 $password1 = "";
 $lname = "";
 $price = "";
-//$imgname = "";
+$imgname = "";
 
 
 
@@ -32,11 +32,12 @@ if (isset($_POST['submit'])) {
 	$password1 = $_POST["pw"];
 	$password2 = $_POST["pw-verify"];
 	$price = $_POST["price"];
-        //$imgname= $_FILES['upload_picture']['tmp_name'];
-
+        $imgname= $_FILES['uploadPicture']['tmp_name'];
+//echo "<pre>";
 //print_r($_FILES);
-
+//echo "</pre>";
 	
+    
 	if($firstname == "" || $lastname == "") {
 		$error = "happened";
 
@@ -80,24 +81,19 @@ if (isset($_POST['submit'])) {
 	*/ 
 
 
-	if($error==="nhappened"){
-		try {
+    if($error==="nhappened"){
+            
 
-			addTutor($lastname, $firstname, $username, $email, $password1,$price);
-		} catch (mysqli_sql_exception $e) {
- 			$errArr = explode(' ', $e->getMessage());
-			if ($errArr[0] == 'Duplicate') {
-				$dupeField = $errArr[5];
-				$noredirect = "true";
-				if ($dupeField == "'username'") {
-					$utaken = '<font color=red>Your username is already taken by another user. Please make another one.</font>';
-				}
-				if ($dupeField == "'Email'") {
-					$etaken = '<font color=red>Your email is already taken by another user. Please make another one.</font>';
-				}
-			
-			}
- 		}
+            $id = addTutor($lastname, $firstname, $username, $email, $password1,$price);
+               //print_r($id);
+    
+            $target_dir = "pictures/";
+            $uploadfile = $target_dir . "article_image_" . $id . ".jpeg";
+            if (move_uploaded_file($imgname, $uploadfile)) {
+             //echo "File is valid, and was successfully uploaded.\n";
+            } else {
+             //echo "Possible file upload attack!\n";
+            }
  		if ($noredirect) {
 
  		}
@@ -106,7 +102,7 @@ if (isset($_POST['submit'])) {
 		
 		$userid = getTutorIDFromUsername($username);
 		$_SESSION["id"] = $userid;
-		header("Location: account.php");
+		header("Location: index.php");
 		exit();
 
  		}

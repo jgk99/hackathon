@@ -36,7 +36,7 @@ function addUser($lname, $fname, $usrname, $email, $pass) {
 	$con->close();
 }
 
-function addTutor($lname, $fname, $usrname, $email, $pass, $price, $imgname) {
+function addTutor($lname, $fname, $usrname, $email, $pass, $price) {
 	//Connecto to database
 	$con = dbconnect();
 
@@ -49,13 +49,12 @@ function addTutor($lname, $fname, $usrname, $email, $pass, $price, $imgname) {
 	$pass = $con->real_escape_string(hash("sha256", $pass)); //Hash password using SHA256 algorithm
 
 	//Build query string
-	$query = "INSERT INTO `tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`,`picture`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price','$imgname')";
+	$query = "INSERT INTO `Tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price')";
 
-	//Execute query and check for errors
-	if (!$con->query($query)) {
-		throw new mysqli_sql_exception("$con->error");
-	}
-	$con->close();
+ 
+mysqli_query($con,$query);
+
+        return mysqli_insert_id($con);
 }
 
 
