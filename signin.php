@@ -1,5 +1,6 @@
 <?php
 
+require_once("includes/dbfuncs.php");
 
 $notUser="";
 

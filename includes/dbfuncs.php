@@ -36,7 +36,7 @@ function addUser($lname, $fname, $usrname, $email, $pass) {
 	$con->close();
 }
 
-function addTutor($lname, $fname, $usrname, $email, $pass, $price, $imgname) {
+function addTutor($lname, $fname, $usrname, $email, $pass, $price) {
 	//Connecto to database
 	$con = dbconnect();
 
@@ -49,7 +49,7 @@ function addTutor($lname, $fname, $usrname, $email, $pass, $price, $imgname) {
 	$pass = $con->real_escape_string(hash("sha256", $pass)); //Hash password using SHA256 algorithm
 
 	//Build query string
-	$query = "INSERT INTO `tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`,`picture`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price','$imgname')";
+	$query = "INSERT INTO `tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price')";
 
 	//Execute query and check for errors
 	if (!$con->query($query)) {
@@ -81,7 +81,31 @@ function getTutorIDFromUsername($username) {
 	}
 }
 
+function validateUser($usrname, $passwd) {
+	//Connect to database
+	$con = dbconnect();
 
+	//Sanitize Variables
+	$usrname = $con->real_escape_string($usrname);
+	$passwd = $con->real_escape_string(hash("sha256",$passwd)); //Hash password using SHA256 algorithm
+
+	//Build query string
+	$query = "SELECT `username` FROM `users || tutors` WHERE `username` = '$usrname' and `password` = '$passwd'";
+	
+	//Execute query and check for errors
+	$data = $con->query($query);
+	if (!$data) {
+		throw new mysqli_sql_exception("Query failed with error: $con->sqlstate");
+	} else {
+		//Check if query returned a row results
+		if ($data->num_rows == 1) {
+			//User is valid
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
 
 		
 function getUserIDFromUsername($username) {
