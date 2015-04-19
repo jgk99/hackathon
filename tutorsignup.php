@@ -35,6 +35,7 @@ if (isset($_POST['submit'])) {
 	$price = $_POST["price"];
         $imgname= $_FILES['uploadPicture']['tmp_name'];
         $subjects= $_POST['subjects'];
+        echo $subjects;
 //echo "<pre>";
 //print_r($_FILES);
 //echo "</pre>";
