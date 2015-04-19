@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
 	*/ 
 
 
-<<<<<<< Updated upstream
+
     if($error==="nhappened"){
             
 
@@ -95,26 +95,7 @@ if (isset($_POST['submit'])) {
             } else {
              //echo "Possible file upload attack!\n";
             }
-=======
-	if($error==="nhappened"){
-		try {
 
-			addTutor($lastname, $firstname, $username, $email, $password1, $price);
-		} catch (mysqli_sql_exception $e) {
- 			$errArr = explode(' ', $e->getMessage());
-			if ($errArr[0] == 'Duplicate') {
-				$dupeField = $errArr[5];
-				$noredirect = "true";
-				if ($dupeField == "'username'") {
-					$utaken = '<font color=red>Your username is already taken by another user. Please make another one.</font>';
-				}
-				if ($dupeField == "'Email'") {
-					$etaken = '<font color=red>Your email is already taken by another user. Please make another one.</font>';
-				}
-			
-			}
- 		}
->>>>>>> Stashed changes
  		if ($noredirect) {
 
  		}
@@ -198,28 +179,30 @@ if (isset($_POST['submit'])) {
 					<td align="left">
                                         
                                         
-                                        <input type="file" name="uploadPicture" class="form-control" required />
+                                        <input type="file" name="uploadPicture" required />
                                         
-                                        
-                                        
+                                                                        
                                         
                                         </td>
-                                
                                 
                                 </tr>
                                 
                                 <tr>
                                 <td>Subjects:</td>
 					<td align="left">
-                                        
-                                        
-                                        <input type="checkbox" name="subjects" class="form-control" required />
-                                        
-                                        
-                                        
-                                        
+                                        <br>
+                                        <input type="radio" name="subjects" value ="math"/> Math
+                                        <br>
+                                        <input type="radio" name="subjects" value ="science"/> Science
+                                        <br>
+                                        <input type="radio" name="subjects" value ="history"/> History
+                                        <br>
+                                        <input type="radio" name="subjects" value ="english"/> English
+                                        <br>
+                                        <input type="radio" name="subjects" value ="foreign language"/> Foreign Language
+                                        <br>
+                                        <br>
                                         </td>
-                                
                                 
                                 </tr>
                                 
