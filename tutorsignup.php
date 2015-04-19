@@ -35,6 +35,7 @@ if (isset($_POST['submit'])) {
 	$price = $_POST["price"];
         $imgname= $_FILES['uploadPicture']['tmp_name'];
         $subjects= $_POST['subjects'];
+        $message= $_POST['message'];
 //echo "<pre>";
 //print_r($_FILES);
 //echo "</pre>";
@@ -87,7 +88,7 @@ if (isset($_POST['submit'])) {
     if($error==="nhappened"){
             
 
-            $id = addTutor($lastname, $firstname, $username, $email, $password1,$price, $subjects);
+            $id = addTutor($lastname, $firstname, $username, $email, $password1,$price, $subjects,$message);
                //print_r($id);
     
             $target_dir = "pictures/";
@@ -166,7 +167,7 @@ if (isset($_POST['submit'])) {
 				</tr>
                                 <tr>
 					<td align="left" class="form-label">Personal Message: </td>
-					<td align="left"><input type="text" name="message" class="form-control" value="<?php echo $message; ?>" required /></td>
+					<td align="left"><textarea rows="10" name ="message" class="form-control"></textarea></td>
 				</tr>
                                 
                                 
