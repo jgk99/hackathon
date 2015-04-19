@@ -19,6 +19,7 @@ $lname = "";
 $email = "";
 $password1 = "";
 $lname = "";
+$price = "";
 
 
 
@@ -29,6 +30,8 @@ if (isset($_POST['submit'])) {
 	$username = $_POST["username"];
 	$password1 = $_POST["pw"];
 	$password2 = $_POST["pw-verify"];
+	$price = $_POST["price"];
+
 
 
 	
@@ -73,9 +76,12 @@ if (isset($_POST['submit'])) {
 	$_SESSION["password"]="$password1";
 	$_SESSION["email"]="$email";
 	*/ 
+
+
 	if($error==="nhappened"){
 		try {
-			addUser($lastname, $firstname, $username, $email, $password1);
+
+			addTutor($lastname, $firstname, $username, $email, $password1,$price);
 		} catch (mysqli_sql_exception $e) {
  			$errArr = explode(' ', $e->getMessage());
 			if ($errArr[0] == 'Duplicate') {
@@ -96,13 +102,16 @@ if (isset($_POST['submit'])) {
  		else {
  	
 		
-
-		header("Location: signupComplete.php");
+		$userid = getTutorIDFromUsername($username);
+		$_SESSION["id"] = $userid;
+		header("Location: account.php");
 		exit();
 
  		}
 	}
 }
+
+
 
 ?>
 
@@ -124,10 +133,10 @@ if (isset($_POST['submit'])) {
 	<?php require_once("includes/header.php"); ?> 
 	<div class="col-md-6 col-md-offset-3">
 		<br /><br />
-		<h2>User Sign Up</h2>
+		<h2>Tutor Sign Up</h2>
 		<br />
 		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script> -->
-		<form action="signup.php" method="post" id="register" data-parsley-validate>
+		<form action="tutorsignup.php" method="post" id="register" data-parsley-validate>
 			<table align="left">
 				<tr>
 					<td align="left" class="form-label">First Name: </td>
@@ -155,6 +164,10 @@ if (isset($_POST['submit'])) {
 				</tr>
 				<br/><?php echo $pmatch; ?><?php echo $utaken; ?><?php echo $etaken; ?>
 				<tr>
+					<tr>
+					<td class="form-label">Price: </td>
+					<td align="left"><input type="text" name="price" class="form-control" value="<?php echo $price; ?>" required /></td>
+				</tr>
 					<td></td>
 					<td><input type="submit" name="submit" value="Submit" class="btn btn-md btn-primary" /></td>
 				</tr>

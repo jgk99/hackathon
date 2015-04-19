@@ -36,17 +36,40 @@ function addUser($lname, $fname, $usrname, $email, $pass) {
 	$con->close();
 }
 
+function addTutor($lname, $fname, $usrname, $email, $pass, $price) {
+	//Connecto to database
+	$con = dbconnect();
+
+	//Sanitize Variables
+	$price = $con->real_escape_string($price);
+	$lname = $con->real_escape_string($lname);
+	$fname = $con->real_escape_string($fname);
+	$usrname = $con->real_escape_string($usrname);
+	$email = $con->real_escape_string($email);
+	$pass = $con->real_escape_string(hash("sha256", $pass)); //Hash password using SHA256 algorithm
+
+	//Build query string
+	$query = "INSERT INTO `tutors` (`lastname`, `firstname`, `username`, `email`, `password`,`price`) VALUES ('$lname', '$fname', '$usrname', '$email', '$pass','$price')";
+
+	//Execute query and check for errors
+	if (!$con->query($query)) {
+		throw new mysqli_sql_exception("$con->error");
+	}
+	$con->close();
+}
 
 
-function getIDFromUsername($username) {
+
+		
+function getTutorIDFromUsername($username) {
 	$con = dbconnect();
 
 	$username = $con->real_escape_string($username);
 
-	$query = "SELECT `id` FROM `users` WHERE `username` = '$username'";
+	$query = "SELECT `id` FROM `tutors` WHERE `username` = '$username'";
 	$data = $con->query($query);
 	if (!$data) {
-		throw new mysqli_sql_exception("Query failed with error: $con->sqlstate");
+		//throw new mysqli_sql_exception("Query failed with error: $con->sqlstate");
 	} else {
 		//Check if query returned a row results
 		if ($data->num_rows == 1) {

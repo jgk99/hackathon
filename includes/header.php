@@ -4,6 +4,8 @@ $login = "";
 $loginlink = "";
 $account = "";
 $accountlink = "";
+$tutorsign = "";
+$tutorsignlink = "";
 
 if (isset($_SESSION["id"])) {
 	$login = "Log Out";
@@ -30,8 +32,9 @@ if (isset($_SESSION["id"])) {
 			<button type="submit" name="submit" class="btn btn-default">Sign In</button>
 		</form>
 	';
-	
-	$account = "Sign Up";
+	$tutorsign= "Tutor Sign Up";
+	$tutorsignlink="tutorsignup.php";
+	$account = "User Sign Up";
 	$accountlink = "signup.php";
 	$login = "Log In";
 	$loginlink = "logout.php";
@@ -56,6 +59,13 @@ echo '
 					<li>
 						<a href="'.$accountlink.'">'.$account.'</a>
 					</li>
+
+					<li>
+						<a href="'.$tutorsignlink.'">'.$tutorsign.'</a>
+					</li>
+
+
+
 				</ul>
 				' . $signin . '
 			</div>
