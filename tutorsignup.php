@@ -21,6 +21,7 @@ $password1 = "";
 $lname = "";
 $price = "";
 $imgname = "";
+$subjects="";
 
 
 
@@ -33,6 +34,7 @@ if (isset($_POST['submit'])) {
 	$password2 = $_POST["pw-verify"];
 	$price = $_POST["price"];
         $imgname= $_FILES['uploadPicture']['tmp_name'];
+        $subjects= $_POST['subjects'];
 //echo "<pre>";
 //print_r($_FILES);
 //echo "</pre>";
@@ -85,7 +87,7 @@ if (isset($_POST['submit'])) {
     if($error==="nhappened"){
             
 
-            $id = addTutor($lastname, $firstname, $username, $email, $password1,$price);
+            $id = addTutor($lastname, $firstname, $username, $email, $password1,$price, $subjects);
                //print_r($id);
     
             $target_dir = "pictures/";
